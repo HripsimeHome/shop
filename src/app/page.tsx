@@ -1,6 +1,11 @@
 //import Image from "next/image";
-import Link from "next/link"
+import Link from "next/link";
+// Используй Link, если: у тебя есть обычная навигационная ссылка:
+// Link
+//   ↓
+// переход по ссылке
 import styles from "./page.module.css";
+//import Button from "./components/ui/Button";
 
 export default function Home() {
   return (
@@ -14,23 +19,27 @@ export default function Home() {
           height={20}
           priority
         /> */}
-        <div className={styles.intro}>        
+        <div className={styles.intro}>
           <nav>
-         <Link href="/">Home</Link>
+            <Link href="/">Home</Link>
+            <br />
+            <Link href="/about">About</Link>
+            <br />
+            <Link href="/products">Products</Link>
+            <br />
+            {/* <Link href="/products/clothes">Products / closes</Link>
          <br />
-         <Link href="/about">About</Link>         
          <br />
-         <Link href="/products">Products</Link>
-         <br />
-         <Link href="/products/clothes">Products / closes</Link>
-         <br />
-         <br />
-         <Link href="/products/clothes/shoes">Products / closes/ shoes</Link>
-         <br />
-         <Link href="/contacts">Contacts</Link>
-
-
-          </nav>       
+         <Link href="/products/clothes/shoes">Products / closes/ shoes</Link> */}
+            <br />
+            <Link href="/contacts">Contacts</Link>
+            <br />
+            <Link href="/login">Login</Link>
+            <br />
+            <Link href="/dashboard">Dashboard</Link>
+          </nav>
+          <br />
+          {/* <Button /> */}
         </div>
         {/* <div className={styles.ctas}>
           <a
@@ -53,3 +62,5 @@ export default function Home() {
     </div>
   );
 }
+
+// page.tsx отвечает за содержимое конкретного маршрута.

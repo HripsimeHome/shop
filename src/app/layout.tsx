@@ -1,6 +1,12 @@
+import Link from "next/link";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+
+import Header from "@/components/Header/Header";
+import Footer from "@/components/Footer/Footer";
+// Символ @ обычно настроен так, чтобы означать:
+// src/components/Footer/Footer
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -20,7 +26,45 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
-      <body>{children}</body>
+      <body>
+        <Header />
+        <br />
+        <Link href={"/"}>Homeopage</Link>
+        <br />
+        {children}
+        {/* children означает: содержимое, которое должно находиться внутри Layout
+        {children} — место, куда вставляется содержимое текущей страницы. */}
+        <Footer />
+      </body>
     </html>
   );
 }
+
+// layout.tsx отвечает за общую оболочку маршрута.
+// {
+//   children,
+// }: {
+//   children: React.ReactNode;
+// }
+
+// можно понимать как:
+// мы получили объект
+//        ↓
+// из него достали children
+//        ↓
+// и указали тип этого объекта
+
+// page.tsx
+//     ↓
+// контент
+
+// layout.tsx
+//     ↓
+// обёртка / каркас
+
+// page.tsx отвечает за содержимое конкретного маршрута.
+// layout.tsx отвечает за общую структуру интерфейса.
+
+// 🔥 Если существует вложенный Layout, то children может содержать весь вложенный Layout вместе с его страницей (например Dashboard).
+
+// В Root Layout: {children} может содержать вложенный Layout вместе с его страницей.
