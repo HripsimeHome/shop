@@ -25,7 +25,6 @@ export default function Loading() {
           <div className={styles.menuItem}></div>
         </div>
       </aside>
-
       {/* Main */}
       <main className={styles.main}>
         {/* Header */}
@@ -33,7 +32,6 @@ export default function Loading() {
           <div className={styles.title}></div>
           <div className={styles.avatar}></div>
         </header>
-
         {/* Cards */}
         <section className={styles.cards}>
           <div className={styles.card}></div>
@@ -41,7 +39,6 @@ export default function Loading() {
           <div className={styles.card}></div>
           <div className={styles.card}></div>
         </section>
-
         {/* Content */}
         <section className={styles.content}>
           <div className={styles.chart}></div>
