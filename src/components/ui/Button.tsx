@@ -1,7 +1,3 @@
-
-
 export default function Button() {
-  
-
-  return  ();
+  return <button>Click me</button>;
 }
