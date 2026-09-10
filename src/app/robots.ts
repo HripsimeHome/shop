@@ -10,11 +10,7 @@ export default function robots(): MetadataRoute.Robots {
       // Можно указать конкретного робота, например: userAgent: "Googlebot", Тогда правило будет предназначено именно для Googlebot.
 
       allow: "/", //Разрешить роботам сканировать сайт. "/" означает корень сайта.
-     disallow: [
-      "/admin/",
-      "/private/",
-      "/dashboard/",
-] // Не сканируй URL, которые находятся в /admin/ .......
+      disallow: ["/admin/", "/private/", "/dashboard/"], // Не сканируй URL, которые находятся в /admin/ .......
       //«Поисковому роботу не следует сканировать этот путь».
     },
 
@@ -31,8 +27,8 @@ export default function robots(): MetadataRoute.Robots {
     //       ↓
     //   список важных URL
 
-    После деплоя у тебя будут: https://shop-eight-opal.vercel.app/robots.txt
-    и: https://shop-eight-opal.vercel.app/sitemap.xml
+    // После деплоя у тебя будут: https://shop-eight-opal.vercel.app/robots.txt
+    // и: https://shop-eight-opal.vercel.app/sitemap.xml
   };
 }
 
