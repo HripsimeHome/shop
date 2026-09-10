@@ -32,6 +32,8 @@ export default function Home() {
          <br />
          <Link href="/products/clothes/shoes">Products / closes/ shoes</Link> */}
             <br />
+            <Link href="/products/orders">Products/orders</Link>
+            <br />
             <Link href="/contacts">Contacts</Link>
             <br />
             <Link href="/login">Login</Link>

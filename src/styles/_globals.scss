@@ -47,3 +47,23 @@ a {
     color-scheme: dark;
   }
 }
+
+// 📌 Global CSS хорошо подходит для:
+
+// body
+// html
+// *
+// reset
+// fonts
+// общие CSS variables
+// глобальные utility styles
+
+// Хороший вариант:
+
+// globals.scss
+// │
+// ├── reset
+// ├── html / body
+// ├── базовые стили
+// ├── глобальный font
+// └── глобальные CSS variables
