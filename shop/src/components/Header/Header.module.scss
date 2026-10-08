@@ -1,0 +1,7 @@
+@use "@/styles/index" as *;
+
+.header {
+  margin-top: 150px;
+  background-color: $color-primary;
+  //@include flexCol();
+}

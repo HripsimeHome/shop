@@ -1,0 +1,23 @@
+.aboutContent {
+  &__block {
+    max-width: 900px;
+    display: flex;
+    margin: 50px 0;
+  }
+
+  &__staffImg {
+    position: relative;
+    width: 400px;
+    height: 200px;
+  }
+
+  &__ourOffice {
+    position: relative;
+    width: 400px;
+    height: 200px;
+    margin-bottom: 50px;
+    // @media (max-width: 768px) {
+    //   width: 100%;
+    // }
+  }
+}

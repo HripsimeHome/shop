@@ -1,22 +1,28 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+//import { Geist, Geist_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
+//import {Montserrat} from "next/fonts/google";
+import { Ubuntu } from "next/font/google";
 //import "@/styles/_index.scss";
+import "@/styles/_global.scss";
 
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
 // Символ @ обычно настроен так, чтобы означать:
 // src/components/Footer/Footer
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+//variable удобен, когда шрифтами нужно управлять через CSS.
+// const geistSans = Geist({
+//   variable: "--font-geist-sans",
+//   .
+//   subsets: ["latin"],
+// });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+// const geistMono = Geist_Mono({
+//   variable: "--font-geist-mono",
+//   subsets: ["latin"],
+// });
 
 //
 // Open Graph управляет preview ссылки при её публикации в поддерживающих сервисах.
@@ -24,6 +30,16 @@ const geistMono = Geist_Mono({
 //
 // Next.js может генерировать отдельную OG-картинку для каждого товара.
 // Для этого используется: ImageResponse из: next/og - прочитать и попробовасть????????????????????????????
+
+// const мontserrat = Montserrat({
+//   subsets: ["latin"],
+//   weight: ["300", "400", "500", "700"],
+// });
+
+const ubuntu = Ubuntu({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "700"],
+});
 
 export const metadata: Metadata = {
   title: {
@@ -92,8 +108,9 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
-      <body>
+    <html lang="en">
+      {/* <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}> */}
+      <body className={ubuntu.className}>
         <Header />
         <br />
         <Link href={"/"}>Homeopage</Link>

@@ -17,8 +17,9 @@ export default async function ProductsPage() {
   // получает данные из тела ответа.
 
   return (
-    <main className={styles.products}>
-      <h1>Products</h1>
+    // <main className={styles.products}>
+    <main className="grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-4">
+      <h1 className="text-blude-900">Products</h1>
       <div className={styles.products__list}>
         {data.products.map((product) => (
           <ProductCard key={product.id} product={product} />

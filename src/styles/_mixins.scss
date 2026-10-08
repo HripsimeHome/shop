@@ -1,31 +1,43 @@
-@use "vars";
+@use "./vars" as *;
+
+@mixin xsmScreenMedia {
+  @media (max-width: $xsm-screen) {
+    @content;
+  }
+}
 
 @mixin smScreenMedia {
-  @media (max-width: vars.$sm-screen) {
+  @media (max-width: $sm-screen) {
     @content;
   }
 }
 
 @mixin mdScreenMedia {
-  @media (max-width: vars.$md-screen) {
+  @media (max-width: $md-screen) {
     @content;
   }
 }
 
 @mixin lgScreenMedia {
-  @media (max-width: vars.$lg-screen) {
+  @media (max-width: $lg-screen) {
     @content;
   }
 }
 
 @mixin xlScreenMedia {
-  @media (max-width: vars.$xl-screen) {
+  @media (max-width: $xl-screen) {
     @content;
   }
 }
 
 @mixin xxlScreenMedia {
-  @media (max-width: vars.$xxl-screen) {
+  @media (max-width: $xxl-screen) {
+    @content;
+  }
+}
+
+@mixin hylgScreenMedia {
+  @media (max-width: $hylg-screen) {
     @content;
   }
 }
@@ -40,25 +52,24 @@
   border: $border;
   background: $bg;
   cursor: pointer;
+
+  &:disabled {
+    cursor: default;
+  }
 }
 
 @mixin svg($width, $color: transparent, $height: $width, $stroke: none) {
   width: $width;
-  height: $height;
   fill: $color;
+  height: $height;
   stroke: $stroke;
 }
 
-@mixin setFont(
-  $size,
-  $weight,
-  $color: vars.$color-black,
-  $family: vars.$font-fam-primary
-) {
+@mixin setFont($size, $weight, $color: $color-secondary, $useMedia: true) {
   font-size: $size;
   font-weight: $weight;
-  font-family: $family;
   color: $color;
+  font-family: $font-family;
 }
 
 @mixin flexCol($layout: center, $align: center) {

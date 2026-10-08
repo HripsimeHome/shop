@@ -9,4 +9,4 @@ export type ShopProduct = {
 
 export type ProductsResponse = {
   products: ShopProduct[];
-};
+}; // Этп Цепочка вывода типов

@@ -18,7 +18,8 @@ export const metadata: Metadata = {
 
 export default function Contacts() {
   return (
-    <div>
+    // min-h-screen → минимальная высота viewport,
+    <div className="min-h-screen bg-green-200">
       <h2>Contacts page</h2>
       <ContactForm />
     </div>
