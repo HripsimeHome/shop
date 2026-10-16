@@ -19,7 +19,13 @@ export const metadata: Metadata = {
 export default function Contacts() {
   return (
     <div>
-      <h2>Contacts page</h2>
+      <h2>Contacts page ddd</h2>
+      {/* col-span-full- Он означает:
+Занять все доступные колонки. */}
+      <div className="grid grid-cols-12 gap-4">
+        <div className="col-span-4">Location map</div>
+        <div className="col-span-8">Address</div>
+      </div>
       <ContactForm />
     </div>
   );

@@ -4,9 +4,9 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div>
-      <aside>Sidebar</aside>
-      <main>{children}</main>
+    <div className="grid grid-cols-12 gap-4">
+      <aside className="col-span-4">Sidebar</aside>
+      <main className="col-span-8">{children}</main>
     </div>
   );
 }

@@ -1,10 +1,9 @@
 export default function dashboard() {
   return (
-    <div>
-      <h2>Dashvboard page(children)</h2>
-    </div>
+    <div>Dashvboard page(children)</div>
   );
 }
+
 
 // export default async function DashboardPage() {
 //   await new Promise((resolve) => setTimeout(resolve, 3000));

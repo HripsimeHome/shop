@@ -20,27 +20,7 @@ export default function Home() {
           priority
         /> */}
         <div className={styles.intro}>
-          <nav>
-            <Link href="/">Home</Link>
-            <br />
-            <Link href="/about">About</Link>
-            <br />
-            <Link href="/products">Products</Link>
-            <br />
-            {/* <Link href="/products/clothes">Products / closes</Link>
-         <br />
-         <br />
-         <Link href="/products/clothes/shoes">Products / closes/ shoes</Link> */}
-            <br />
-            <Link href="/products/orders">Products/orders</Link>
-            <br />
-            <Link href="/contacts">Contacts</Link>
-            <br />
-            <Link href="/login">Login</Link>
-            <br />
-            <Link href="/dashboard">Dashboard</Link>
-          </nav>
-          <br />
+         
           <p>My shop project</p>
           {/* <Button /> */}
         </div>

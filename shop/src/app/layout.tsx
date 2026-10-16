@@ -95,9 +95,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
       <body>
         <Header />
-        <br />
-        <Link href={"/"}>Homeopage</Link>
-        <br />
         {children}
         {/* children означает: содержимое, которое должно находиться внутри Layout
         {children} — место, куда вставляется содержимое текущей страницы. */}

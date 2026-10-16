@@ -2,6 +2,7 @@ import styles from "./ProductsPage.module.scss";
 import { getProducts } from "@/lib/products";
 import ProductCard from "@/components/ProductCard/ProductCard";
 import type { Metadata } from "next";
+import CartButton from "@/components/ProductCard/ProductCardButtonConditional";
 
 export const metadata: Metadata = {
   title: "Products",
@@ -18,12 +19,17 @@ export default async function ProductsPage() {
 
   return (
     // <main className={styles.products}>
-    <main className="grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-4">
+    <main>
       <h1 className="text-blude-900">Products</h1>
-      <div className={styles.products__list}>
+      <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {data.products.map((product) => (
-          <ProductCard key={product.id} product={product} />
+          <ProductCard
+            key={product.id}
+            product={product}
+            isOnSale={product.price > 100}
+          />
         ))}
+        {/* Для демонстрации это условие подходит, но в реальном магазине нельзя автоматически считать любой товар дешевле 100 валютных единиц товаром со скидкой. Лучше получать статус скидки из API или рассчитывать его по данным о старой и новой цене. */}
       </div>
     </main>
   );

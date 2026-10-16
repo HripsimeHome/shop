@@ -9,6 +9,9 @@ import "@/styles/_global.scss";
 
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
+
+import Container from "@/components/layout/Container";
+
 // Символ @ обычно настроен так, чтобы означать:
 // src/components/Footer/Footer
 
@@ -111,14 +114,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html lang="en">
       {/* <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}> */}
       <body className={ubuntu.className}>
-        <Header />
-        <br />
-        <Link href={"/"}>Homeopage</Link>
-        <br />
+     <Container>
+        <Header />        
         {children}
         {/* children означает: содержимое, которое должно находиться внутри Layout
         {children} — место, куда вставляется содержимое текущей страницы. */}
         <Footer />
+         </Container>
       </body>
     </html>
   );
@@ -152,3 +154,5 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
 // 🔥 Если существует вложенный Layout, то children может содержать весь вложенный Layout вместе с его страницей (например Dashboard).
 
 // В Root Layout: {children} может содержать вложенный Layout вместе с его страницей.
+ 
+
