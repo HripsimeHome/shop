@@ -7,10 +7,17 @@
 
 // @use → подключает и использует Sass-модуль.
 
+// После этого Tailwind создаёт соответствующий utility-класс:
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
   --content-width: 350px;
+  --color-primary: #dbec62;
+  --color-dark: #050505;
+  --color-white: #ffffff;
+  --color-gray: #f3f4f6;
+  --radius-card: 16px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -18,6 +25,10 @@
     --background: #0a0a0a;
     --foreground: #ededed;
   }
+}
+
+@theme {
+  --color-primary: #dbec62;
 }
 
 html {

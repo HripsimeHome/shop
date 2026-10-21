@@ -2,8 +2,14 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import Image from "next/image";
-import CartButton from "@/components/ProductCard/ProductCardButtonConditional.tsx";
+import CartButton from "@/components/ProductCard/ProductCardButtonConditional";
 import ButtonVariant from "@/components/ui/ButtonVariant";
+import AddedButton from "@/components/ui/AddedButton";
+import AvailableButton from "@/components/ui/AvailableButton";
+import ArrayButton from "@/components/ui/ArrayButton";
+import ConditionsButton from "@/components/ui/ConditionsButton";
+import CNButton from "@/components/ui/CNButton";
+import FeaturedButton from "@/components/ui/Featured Button";
 
 export default function ContacForms() {
   const router = useRouter();
@@ -23,7 +29,7 @@ export default function ContacForms() {
         <div className="col-span-8">Address col-span-8</div>
       </div>
       {/* max-w-full означает max-width: 100%; */}
-      <h2 className="max-w-full bg-green-400 text-3xl text-black/50">
+      <h2 className="max-w-full bg-[#dbec62] text-3xl text-[#333333]/50 border border-2 border-[#geaede]">
         Contact form text-black/50
       </h2>
       <br />
@@ -1032,16 +1038,205 @@ col-span-4 - когда нужно просто занять четыре кол
       </div>
       <br /> <br />
       <ButtonVariant variant="primary">Primary - Add to cart</ButtonVariant>
-      <ButtonVariant variant="secondary">Secondary - Cancel</ButtonVariant>
+      <ButtonVariant variant="secondary" size="sm">
+        Secondary - Cancel
+      </ButtonVariant>
       <ButtonVariant
         variant="danger"
+        size="lg"
         type="submit"
-        disabled={false}
         onClick={() => console.log("Clicked")}
         className="underline hover:no-underline"
       >
         Delete button
       </ButtonVariant>
+      <ButtonVariant variant="secondary" size="sm" disabled>
+        Disabled
+      </ButtonVariant>
+      <br /> <br />
+      <div className="space-y-4">
+        <p className="font-bold">CLSX via String</p>
+        <AddedButton isAdded></AddedButton>
+        <AddedButton isAdded={false}></AddedButton>
+        <p className="font-extrabold">CLSX via Object</p>
+        <AvailableButton isAvailable></AvailableButton>
+        <AvailableButton isAvailable={false}></AvailableButton>
+        <p> CLSX via Array</p>
+      </div>
+      <br />
+      <ArrayButton isAdded></ArrayButton>
+      <p className="font-medium">CLSX - Несколько условий одновременно</p>
+      <br />
+      <p className="font-medium">isAdded && isAvailable</p>
+      <ConditionsButton isAdded isAvailable></ConditionsButton>
+      <br />
+      <p className="font-black">!isAdded && isAvailable</p>
+      <ConditionsButton isAdded={false} isAvailable></ConditionsButton>
+      <br />
+      <p className="font-semibold">isAvailable=false</p>
+      <ConditionsButton isAvailable={false}></ConditionsButton>
+      <br />
+      <p className="font-semibold">fullWidth</p>
+      <div className="w-[500px]">
+        <ConditionsButton isAdded isAvailable fullWidth></ConditionsButton>
+      </div>
+      <br />
+      <p className="font-semibold">Calc()</p>
+      <div className="w-[calc(100%-130px)] border border-green">
+        В частности, в арифметических выражениях calc() вокруг оператора - нужны
+        пробелы. Tailwind поддерживает формат calc() внутри произвольного
+        значения.
+        <br />
+        calc() стоит применять, когда действительно требуется вычисление. Для
+        обычных отступов и размеров лучше выбирать более простые классы.
+      </div>
+      <p className="font-semibold">
+        Arbitrary Values вместе с Responsive Modifiers
+      </p>
+      <div className="w-full md:w-[347px]  bg-[#dbec62] hover:bg-[#c8d94f] rounded-[10px] hover:rounded-[18px]">
+        на мобильных устройствах ширина блока должна быть 100%, а на больших
+        экранах — 347px.
+      </div>
+      <br /> <br />
+      <p>cn() объединяет классы и разрешает известные конфликты.</p>
+      <ButtonVariant size="lg" className="px-26">
+        Здесь сработал внутренний класс px-26. А для lg - предназначен px-6
+      </ButtonVariant>
+      {/* <ButtonVariant variant="primary" size="md">
+        Primary - Add to cart
+      </ButtonVariant> */}
+      <br /> <br />
+      <CNButton> </CNButton>
+      <br /> <br />
+      <FeaturedButton featured></FeaturedButton>
+      <br /> <br />
+      <FeaturedButton></FeaturedButton>
+      <br /> <br />
+      <strong>Arbitrary Values</strong>
+      <p className="leading-[25px]">Line-height</p>
+      <p className="tracking-[0.5px]">tracking-[0.5px]</p>
+      <br /> <br />
+      <button className="rounded-[10px] hover:rounded-[18px] bg-green-400 p-4px cursor-default hover:cursor-pointer ">
+        rounded-[10px] hover:rounded-[18px]
+      </button>
+      <br /> <br />
+      <div className="md:[writing-mode:vertical-rl] [text-decoration-thickness:3px]">
+        Vertical text only after md
+      </div>
+      <p className="[color:#333333]">
+        Arbitrary Properties:[writing-mode:vertical-rl], [color:#333333]
+        [text-decoration-thickness:3px]
+      </p>{" "}
+      <br /> <br />
+      Правило: для сложения и вычитания в CSS calc() вокруг операторов
+      необходимо использовать пробелы. При записи в Tailwind-классах пробелы
+      обычно заменяют на _, чтобы они не разделяли класс.
+      <div className="w-[calc(100%_-_32px)]">Products</div>
+      <br /> <br />
+      <strong>
+        Функция min() - min() выбирает наименьшее из переданных значений -
+        width: min(100%, 420px);.
+      </strong>
+      <p>
+        Браузер сравнивает 100% ширины родителя и 420px, а затем использует
+        меньшее значение.
+      </p>
+      <p>
+        w-[min(100%,420px)] - Что произойдёт: - если доступная ширина контейнера
+        360px, элемент будет шириной 360px; - если доступная ширина контейнера
+        600px, элемент будет шириной 420px. Похожий результат часто можно
+        получить с помощью стандартных классов:
+      </p>
+      <div className="w-[min(100%,420px)]"></div>
+      <br /> <br />
+      <strong>
+        Функция max() max() выбирает наибольшее из переданных значений.
+      </strong>
+      <p>
+        width: max(50%, 300px); Браузер выбирает большее значение между
+        половиной ширины родителя и 300px.
+      </p>
+      <div className="w-[max(50%,300px)]">Product</div>
+      <p>
+        Когда применять max() Функция полезна, когда элемент должен иметь
+        определённый минимальный размер, даже если вычисляемое значение меньше.
+        Но будьте осторожны: max(50%, 300px) может сделать элемент шире
+        родителя, если родитель очень узкий. max() не гарантирует, что элемент
+        поместится в контейнер.
+      </p>
+      <br /> <br />
+      <p>
+        Функция clamp()- особенно полезна для адаптивного дизайна. Она
+        ограничивает значение тремя параметрами: font-size: clamp(16px, 2vw,
+        28px);
+        <br />
+        minimum — минимально допустимое значение; preferred — предпочтительное,
+        часто изменяющееся значение; maximum — максимально допустимое значение.
+        <br />
+        Браузер старается использовать предпочтительное значение, но не
+        позволяет ему выйти за минимальную и максимальную границы.
+      </p>
+      <div>
+        Адаптивный размер заголовка Предположим, заголовок страницы товаров
+        должен: - быть не меньше 24px; - увеличиваться в зависимости от ширины
+        окна; - не превышать 40px.
+        <br />
+        4vw — предпочтительный размер, зависящий от ширины. vw означает один
+        процент ширины окна браузера. Поэтому при изменении ширины окна значение
+        4vw тоже изменяется.
+        <h1 className="text-[clamp(24px,2vw,40px)] font-bold">Our Products</h1>
+        <br />
+        Узкий экран:24px Если 4vw меньше 24px, используется минимум. Средний
+        экран: 4vw - Когда предпочтительное значение находится между границами,
+        размер меняется плавно. Широкий экран: 40pxЕсли 4vw превышает 40px,
+        размер ограничивается максимумом. Таким образом, не нужно писать
+        несколько media queries, чтобы постепенно менять размер заголовка на
+        разных экранах.
+      </div>
+      <br />
+      <p> Адаптивная ширина блока</p>
+      <p>
+        Важно: clamp() ограничивает вычисляемое значение, но не учитывает
+        автоматически все особенности родительского контейнера. Если доступная
+        ширина меньше заданного минимума, блок может выйти за его пределы. Для
+        обычных адаптивных контейнеров часто удобнее использовать w-full max-w-*
+      </p>
+      <div className="w-[clamp(280px,80vw,600px)] border-2 border-blue-600">
+        w-[clamp(280px,80vw,600px)
+      </div>
+      <strong>Сравнение calc(), min(), max() и clamp()</strong>
+      <p>
+        нужно вычислить — calc(); нужно выбрать меньшее — min(); нужно выбрать
+        большее — max(); нужно ограничить минимальным и максимальным значением —
+        clamp().
+      </p>
+      <section className="p-[clamp(16px,3vw,32px)] border-2 border-green-600">
+        <h2 className="text-xl font-semibold">
+          p-[clamp(16px,3vw,32px)] - Здесь padding будет адаптироваться в
+          зависимости от ширины окна, но останется в диапазоне от 16px до 32px.
+        </h2>
+      </section>
+      <br />
+      <br />
+      <div className="w-[min(100%,420px)] rounded-xl border p-[clamp(16px,3vw,24px)]">
+        <h2 className="text-[clamp(20px,3vw,28px)] font-semibold">
+          adaptive sizes: w-[min(100%,420px)] ; p-[clamp(16px,3vw,24px)];
+          "text-[clamp(20px,3vw,28px)]
+        </h2>
+      </div>
+      <br />
+      Чтобы получить значение CSS-переменной, используется CSS-функция var(). Мы
+      можем применять эту функцию внутри Arbitrary Values
+      <div className="bg-[var(--color-primary)] hover:bg-[var(--color-dark)] w-[400px] text-[var(--color-dark)] hover:text-[var(--color-white)] rounded-[var(--radius-card)]">
+        Переменная может хранить практически любое CSS-значение: размер, отступ,
+        радиус, ширину или значение для вычисления. -
+        hover:bg-[var(--color-dark)]
+      </div>
+       <h2 className="before:content-[''] before:mb-3 before:block before:h-1 before:w-50 before:bg-[#dbec62]">
+        before: Pseudo-element
+      </h2>
+<p>Важный момент: content
+Для before: и after: в Tailwind необходимо задать содержимое псевдоэлемента. Если нам не нужен текст, используется пустое содержимое:</p>
     </div>
   );
 }

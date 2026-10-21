@@ -1,8 +1,0 @@
-@use "@/styles/style" as *;
-
-.footer {
-  margin-top: 150px;
-  color: $color-accent;
-  background-color: $color-primary;
-  @include flexCol();
-}

@@ -6,6 +6,8 @@ export default function Footer() {
       footer
       <p className="text-red">Text red</p>
       <Link href="/">Home</Link>
+      <br />
+      <Link href="/products">Products</Link>
     </footer>
   );
 }

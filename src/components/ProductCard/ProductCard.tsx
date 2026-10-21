@@ -3,18 +3,37 @@ import type { ShopProduct } from "@/types/product";
 import Image from "next/image";
 //import { ArrowRight } from "lucide-react";
 import CartButton from "@/components/ProductCard/ProductCardButtonConditional";
+import ButtonVariant from "../ui/ButtonVariant";
+import Badge from "../ui/Badge";
+import React from "react";
+
 type ProductCardProps = {
   product: ShopProduct;
   isOnSale: boolean;
+  isAvailable?: boolean;
+  color?: string;
+  // isAvailable определяет, доступен ли товар для покупки.
 };
 
-export default function ProductCard({ product, isOnSale }: ProductCardProps) {
+export default function ProductCard({
+  product,
+  isOnSale,
+  color,
+}: ProductCardProps) {
   return (
     <div
       // 📌 это Условные классы, т.е. когда border color не определен сначала, потом определяем условным классом. Элемент существует всегда, но его оформление меняется. Conditional Classes меняют оформление существующего элемента.
-      className={`flex flex-col group rounded-xl border p-4 shadow-md
+      className={`flex flex-col group relative rounded-xl border p-4 shadow-md  after:absolute        
+      after:top-0 
+      after:right-0 
+      after:h-3 
+      after:w-3
+      after:rounded-tr-lg
+      after:bg-[var(--color-primary)] 
+      after:content-['']
     ${isOnSale ? "border-red-400" : "border-gray-400"}
     `}
+      // Псевдоэлемент позиционируется относительно карточки, потому что у article есть relative.
     >
       {/* flex-1 mt-auto */}
       {/* group — обозначает родительский элемент как группу. */}
@@ -30,18 +49,43 @@ export default function ProductCard({ product, isOnSale }: ProductCardProps) {
         //   Sale
         // </span>
       )}
-      <h2
-        className="h-[50px] 
+      <a
+        href="/products/orders"
+        className="relative inline-block 
+        after:absolute
+        after:bottom-0 
+        after:left-0 
+        after:h-1
+        after:w-0 
+        after:bg-[var(--color-primary)]
+        hover:after:bg-[var(--color-dark)]
+        after:transition-all
+        after:duration-300
+        after:content-['']
+        hover:after:w-full"
+      >
+        <h2
+          className="h-[50px] 
         text-xl
         font-medium 
         line-clamp-2 
         leading-tight
         text-gray-600
         group-hover:text-red-400
-        group-focus-within:text-blue-400"
-      >
-        {product.title}
-      </h2>
+        group-focus-within:text-blue-400
+        
+        after:block 
+        after:h-1
+        after:w-50
+        after:bg-[#dbec62]
+        after:content-['']
+        before:mr-2
+        before:content-['★']"
+        >
+          {product.title}
+        </h2>
+      </a>
+
       {/* group-hover:	Когда родитель находится под указателем
 group-focus-within:	Когда родитель или его потомок имеет фокус
 group-focus:	Когда сам родитель находится в фокусе */}
@@ -74,9 +118,38 @@ group-focus:	Когда сам родитель находится в фокус
       >
         Add to cart
       </button> */}
-      <CartButton status="available" />
+      <br />
+      <article
+        // 📌 CSS Variables можно объявлять не только в :root, но и на конкретном элементе.
+        //🔹Почему здесь используется style? Потому что мы задаём значение CSS-переменной динамически через React.
+        style={{ "--card-color": "#dbec62" } as React.CSSProperties} //сообщает TypeScript, какой тип стилей мы передаём.
+        className="rounded-lg bg-[var(--card-color)] p-6 my-2"
+      >
+        <h2>
+          Product description - Dynamic variable colora as React.CSSProperties
+        </h2>
+      </article>
+      {/* если цвет приходит через props, компонент может выглядеть так: */}
+      {/* 📌 Если CSS-переменная не имеет значения, выражение var(--color-primary)
+      не сможет получить его. Можно указать запасное значение: 
+      <button className="bg-[var(--color-primary,#dbec62)]">Add to cart</button>
+      Здесь #dbec62 — fallback, то есть запасное значение. Оно используется, если --color-primary не определена или не может предоставить допустимое значение для этого свойства.*/}
+      <p
+        style={{ "--card-color": color } as React.CSSProperties}
+        className="rounded-lg bg-[var(--card-color)] p-2"
+      >
+        Dynamic variable colora as React.CSSProperties
+      </p>
+      <CartButton status="default" />
       <CartButton status="added" />
       <CartButton status="unavailable" />
+      <ButtonVariant variant="primary" size="sm" disabled>
+        {/* disabled={!isAvailable}> */}
+        Disabled
+      </ButtonVariant>
+      <Badge variant="sale">sale</Badge>
+      <Badge variant="new">new</Badge>
+      <Badge variant="outOfStock">outOfStock</Badge>
     </div>
   );
 }
