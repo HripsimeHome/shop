@@ -31,9 +31,11 @@ const Header = () => {
           {/* <Link href="/products/clothes">Products / closes</Link>              
          <Link href="/products/clothes/shoes">Products / closes/ shoes</Link> */}
           <Link href="/products/orders">Products/orders</Link>
-          <Link href="/contacts">Contacts</Link>
+
           <Link href="/login">Login</Link>
           <Link href="/dashboard">Dashboard</Link>
+          <Link href="/tailwind">Tailwind</Link>
+          <Link href="/contacts">Contacts</Link>
         </nav>
       </div>
     </header>
