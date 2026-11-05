@@ -2,14 +2,14 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import Image from "next/image";
-import CartButton from "@/components/ProductCard/ProductCardButtonConditional";
+import CartButton from "@/components/Products/ProductCardButtonConditional";
 import ButtonVariant from "@/components/ui/ButtonVariant";
 import AddedButton from "@/components/ui/AddedButton";
 import AvailableButton from "@/components/ui/AvailableButton";
 import ArrayButton from "@/components/ui/ArrayButton";
 import ConditionsButton from "@/components/ui/ConditionsButton";
 import CNButton from "@/components/ui/CNButton";
-import FeaturedButton from "@/components/ui/Featured Button";
+import FeaturedButton from "@/components/ui/FeaturedButton";
 
 export default function ContacForms() {
   const router = useRouter();

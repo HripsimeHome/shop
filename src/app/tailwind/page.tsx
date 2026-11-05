@@ -2,14 +2,15 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import Image from "next/image";
-import CartButton from "@/components/ProductCard/ProductCardButtonConditional";
+import CartButton from "@/components/Products/ProductCardButtonConditional";
 import ButtonVariant from "@/components/ui/ButtonVariant";
 import AddedButton from "@/components/ui/AddedButton";
 import AvailableButton from "@/components/ui/AvailableButton";
 import ArrayButton from "@/components/ui/ArrayButton";
 import ConditionsButton from "@/components/ui/ConditionsButton";
 import CNButton from "@/components/ui/CNButton";
-import FeaturedButton from "@/components/ui/Featured Button";
+import Button from "@/components/Button";
+import FeaturedButton from "@/components/ui/FeaturedButton";
 
 export default function Tailwind() {
   const router = useRouter();
@@ -32,6 +33,9 @@ export default function Tailwind() {
       <h2 className="max-w-full bg-[#dbec62] text-3xl text-[#333333]/50 border border-2 border-[#geaede]">
         Contact form text-black/50
       </h2>
+           <p className="transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-black"
+          >transition-colors duration-200 ...
+          </p>
       <br />
       <button onClick={() => router.push("/about")} className="border">
         Go to the About page
@@ -773,13 +777,15 @@ col-span-4 - когда нужно просто занять четыре кол
       selected:
       <br />
       <select
-        defaultValue="all"
+        defaultValue="electronics"
         className="w-[150px] rounded-lg border border-gray-300 px-4 py-3"
       >
         <option value="all">All categories</option>
-        <option value="electronics" className="selected:bg-gray-200">
-          Electronics
-        </option>
+        {/* 🔹 selected:bg-gray-200 не работает. Error: Use the `defaultValue` or `value` props on <select> instead of setting `selected` on <option>. */}
+        
+        {/* <option value="electronics" selected className="selected:bg-gray-200">
+        Electronics
+        </option> */}
         <option value="furniture" className="selected:bg-red-200">
           Furniture
         </option>
@@ -1074,7 +1080,7 @@ col-span-4 - когда нужно просто занять четыре кол
       <ConditionsButton isAdded={false} isAvailable></ConditionsButton>
       <br />
       <p className="font-semibold">isAvailable=false</p>
-      <ConditionsButton isAvailable={false}></ConditionsButton>
+      {/* <ConditionsButton isAvailable={false}></ConditionsButton> */}
       <br />
       <p className="font-semibold">fullWidth</p>
       <div className="w-[500px]">
@@ -1106,11 +1112,11 @@ col-span-4 - когда нужно просто занять четыре кол
         Primary - Add to cart
       </ButtonVariant> */}
       <br /> <br />
-      <CNButton> </CNButton>
+      {/* <CNButton> </CNButton> */}
       <br /> <br />
       <FeaturedButton featured></FeaturedButton>
       <br /> <br />
-      <FeaturedButton></FeaturedButton>
+      {/* <FeaturedButton></FeaturedButton> */}
       <br /> <br />
       <strong>Arbitrary Values</strong>
       <p className="leading-[25px]">Line-height</p>
@@ -1232,11 +1238,98 @@ col-span-4 - когда нужно просто занять четыре кол
         радиус, ширину или значение для вычисления. -
         hover:bg-[var(--color-dark)]
       </div>
-       <h2 className="before:content-[''] before:mb-3 before:block before:h-1 before:w-50 before:bg-[#dbec62]">
+      <h2 className="before:content-[''] before:mb-3 before:block before:h-1 before:w-50 before:bg-[#dbec62]">
         before: Pseudo-element
       </h2>
-<p>Важный момент: content
-Для before: и after: в Tailwind необходимо задать содержимое псевдоэлемента. Если нам не нужен текст, используется пустое содержимое:</p>
+      <p>
+        Важный момент: content Для before: и after: в Tailwind необходимо задать
+        содержимое псевдоэлемента. Если нам не нужен текст, используется пустое
+        содержимое:
+      </p>
+
+
+      <button
+  className="
+    bg-green-600 text-gray-900
+    hover:bg-gray-200
+    dark:bg-red-800 dark:text-white
+    dark:hover:bg-gray-700
+  "
+>
+  Add to cart
+</button>
+
+<div className="flex flex-col desktop:flex-row bg-brand-400 desktop:bg-brand-600 mobile:bg-orange-200">
+  <div>flex-col desktop:flex-row</div>
+  <div>bg-brand-400 desktop:bg-brand-8600 mobile:bg-orange-200</div>
+</div>
+ <br /> <br />
+
+ <h2 className="text-2xl">Built-in animations</h2>
+ <p>1. Tailwind class animate-spin for loading - under comment</p>
+ {/* <div className="flex min-h-40 items-center justify-center">
+    <div
+      className="
+        size-10 animate-spin rounded-full
+        border-4 border-gray-200 border-t-black
+      "
+      role="status"
+      aria-label="Loading"
+    />
+  </div> */}
+    
+<div className="flex items-center gap-2">
+  <span className="relative flex size-3">
+    <span className="absolute inline-flex size-full animate-ping rounded-full bg-green-400 opacity-75" />
+    <span className="relative inline-flex size-3 rounded-full bg-green-500" />
+  </span>
+  <span className="text-sm text-gray-600">
+    2. class animate-ping
+  </span>
+</div>
+
+
+<br /><br />
+
+<strong>3. animate-pulse - Skeleton UI</strong> 
+<article className="animate-pulse rounded-xl border border-gray-200 p-4">
+  <div className="h-48 rounded-lg bg-gray-200" />
+  <div className="mt-4 h-5 w-3/4 rounded bg-gray-200" />
+  <div className="mt-3 h-4 w-1/2 rounded bg-gray-200" />
+  <div className="mt-5 h-10 rounded-lg bg-gray-200" />
+</article>
+    
+    
+  <p>animate-bounce — подпрыгивание - заставляет элемент периодически двигаться вверх и вниз.
+  </p>  
+  <br />
+  Подходит для небольших подсказок, например стрелки, указывающей на содержимое ниже.
+  <br />
+    <div className="flex flex-col items-center gap-2">
+      <p className="text-sm text-gray-600">
+       4.  Scroll to explore
+      </p>
+      <span className="animate-bounce text-2xl">
+        ↓
+      </span>
+    </div>
+
+    <br />
+       <Button className="bg-red-300">Add to cart</Button>       
+          <Button className="bg-blue-600">Buy now</Button>      
+          <Button className="bg-gray-600">Buy now</Button>
+    
+          {/* 
+          // throw new Error("Тестовая ошибка для Products/orders!");
+          // <button
+            className={
+              isActive
+                ? "rounded-lg bg-black px-4 py-2 text-white"
+                : "rounded-lg bg-gray-300 px-4 py-2 text-gray-700"
+            }
+          >
+            Add to cart
+          </button> */}
     </div>
   );
 }

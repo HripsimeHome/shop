@@ -2,9 +2,12 @@
 import type { ShopProduct } from "@/types/product";
 import Image from "next/image";
 //import { ArrowRight } from "lucide-react";
-import CartButton from "@/components/ProductCard/ProductCardButtonConditional";
+import CartButton from "@/components/Products/ProductCardButtonConditional";
 import ButtonVariant from "../ui/ButtonVariant";
 import Badge from "../ui/Badge";
+import FavoriteButton from "../ui/FavoriteButton";
+
+
 import React from "react";
 
 type ProductCardProps = {
@@ -20,10 +23,13 @@ export default function ProductCard({
   isOnSale,
   color,
 }: ProductCardProps) {
+ 
+
+
   return (
     <div
       // 📌 это Условные классы, т.е. когда border color не определен сначала, потом определяем условным классом. Элемент существует всегда, но его оформление меняется. Conditional Classes меняют оформление существующего элемента.
-      className={`flex flex-col group relative rounded-xl border p-4 shadow-md  after:absolute        
+      className={`flex flex-col group relative rounded-card border p-4 shadow-md  after:absolute        
       after:top-0 
       after:right-0 
       after:h-3 
@@ -32,7 +38,9 @@ export default function ProductCard({
       after:bg-[var(--color-primary)] 
       after:content-['']
     ${isOnSale ? "border-red-400" : "border-gray-400"}
+    bg-surface
     `}
+    //  bg-gray-200 dark:bg-green-300
       // Псевдоэлемент позиционируется относительно карточки, потому что у article есть relative.
     >
       {/* flex-1 mt-auto */}
@@ -68,6 +76,7 @@ export default function ProductCard({
           className="h-[50px] 
         text-xl
         font-medium 
+        font-heading
         line-clamp-2 
         leading-tight
         text-gray-600
@@ -108,6 +117,7 @@ group-focus:	Когда сам родитель находится в фокус
           // width={300}
           // height={200}
           fill
+          loading="lazy"
           sizes="(max-width: 640px) 10vw, (max-width: 1024px) 50vw, 25vw"
           className="w-full h-auto  object-contain transition-transform duration-300 group-hover:scale-105 p-4"
         />
@@ -121,10 +131,17 @@ group-focus:	Когда сам родитель находится в фокус
       <br />
       <article
         // 📌 CSS Variables можно объявлять не только в :root, но и на конкретном элементе.
-        //🔹Почему здесь используется style? Потому что мы задаём значение CSS-переменной динамически через React.
+        // 🔹 Почему здесь используется style? Потому что мы задаём значение CSS-переменной динамически через React.
         style={{ "--card-color": "#dbec62" } as React.CSSProperties} //сообщает TypeScript, какой тип стилей мы передаём.
         className="rounded-lg bg-[var(--card-color)] p-6 my-2"
-      >
+      >  
+        {/* 🔹 Можно также использовать так:
+       style={{ "--card-color": color } as React.CSSProperties}
+       className="rounded-lg bg-[var(--card-color)] p-6"  -Да
+       Теперь цвет карточки можно передавать при использовании компонента:
+       <ProductCard title="Product A" color="#dbec62" />
+       поискать в проекте - если цвет приходит через props, компонент может выглядеть так */}
+
         <h2>
           Product description - Dynamic variable colora as React.CSSProperties
         </h2>
@@ -149,7 +166,13 @@ group-focus:	Когда сам родитель находится в фокус
       </ButtonVariant>
       <Badge variant="sale">sale</Badge>
       <Badge variant="new">new</Badge>
-      <Badge variant="outOfStock">outOfStock</Badge>
+      <Badge variant="outOfStock">outOfStock</Badge>    
+
+       
+      <FavoriteButton />{/* Если товар изначально находится в избранном:
+      <FavoriteButton initialIsFavorite={true} /> 
+      Или сокращённо:
+      <FavoriteButton initialIsFavorite />*/}
     </div>
   );
 }

@@ -16,8 +16,7 @@ export default function Login() {
   // 🔥 Вот почему useRouter() нужен там, где навигация зависит от логики программы.
   return (
     <div>
-      <h2>Ths is login page</h2>
-      <br />
+      <h2 className="mb-4">Ths is login page</h2>     
       <button onClick={handleLogin}>Login</button>
     </div>
   );

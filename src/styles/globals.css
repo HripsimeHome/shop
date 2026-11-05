@@ -1,0 +1,128 @@
+@import "tailwindcss";
+@import "./theme.css";
+
+/* 🔹 @custom-variant dark Настраивает ручное управление тёмной темой через CSS-класс dark. */
+
+@custom-variant dark (&:where(.dark, .dark *));
+/*📌 Но @custom-variant можно использовать не только для тёмной темы.
+Например, можно создать модификатор для элементов внутри контейнера с классом compact:
+@custom-variant compact (&:where(.compact, .compact *));
+После этого:
+<div className="compact">
+  <button className="px-6 py-3 compact:px-3 compact:py-1">
+    Button
+  </button>
+</div> */
+
+/* Объявляем значения для светлой темы */
+/* :root — корневой селектор документа. Здесь мы определяем значения CSS-переменных по умолчанию. */
+:root {
+  --surface: #ffffff;
+  --text-primary: #111827;
+  --border-default: #1a337c;
+}
+
+/* Переопределяем значения для тёмной темы */
+.dark {
+  --surface: #111827;
+  --text-primary: #f9fafb;
+  --border-default: #d0fb99;
+}
+
+/* 📌 @theme inline -Определение токенов с подстановкой значений */
+/* Связываем CSS-переменные с Tailwind */
+/* @theme inline сообщает Tailwind, что токены используют значения других CSS-переменных. Это особенно полезно, когда значение должно меняться в зависимости от темы. */
+
+/* 🔹 @theme inline позволяет подставить значение токена непосредственно в сгенерированное utility-правило. */
+
+
+ /* 🔹  Для цветов, которые должны автоматически изменяться, используем обычные CSS-переменные и @theme inline. */
+
+ /* 📌 Токены --font-* создают соответствующие Tailwind-классы font-*. */
+ 
+@theme inline {
+  --color-surface: var(--surface);
+  --color-text-primary: var(--text-primary);
+  --color-border-default: var(--border-default);
+  --font-body: var(--font-inter);  
+   /* --font-body — токен Tailwind. */ 
+   --font-heading: var(--font-manrope);
+   --font-description: var(--font-montserrat);
+  /* Теперь Tailwind создаст классы: font-body, font-heading, font-description */
+  
+}
+
+/* 📌 результате у нас появляются классы:
+- bg-surface;
+- text-text-primary;
+- border-border-default.
+Да, название класса для токена --color-text-primary получается text-text-primary: первый text- обозначает utility для цвета текста, а второй входит в имя самого токена. */
+
+
+
+/* 📌 Custom Utilities. @utility — объявляет пользовательскую утилиту.*/
+
+ /* 🔹 @utility —  Создаёт новые собственные utility-классы    */
+@utility underline-brand {
+  text-decoration-line: underline;
+  text-decoration-color: var(--color-brand-600);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
+@utility border-brand-accent {
+  border-color: var(--color-brand-600);
+  border-width: 2px;
+}
+
+@utility tracking-display {
+  letter-spacing: -0.04em;
+}
+ 
+ 
+/* 📌 Функциональные Custom Utilities  - утилиты, которые принимают динамические значения.*/
+
+/* 🔹 динамический font-size */ 
+@utility font-custom-* { /*Звёздочка * означает, что утилита принимает значение.*/
+  font-size: calc(--value(integer) * 1px); /* функция --value() позволяет извлекать значения из названия класса.*/
+}
+
+@utility card-width-* {
+  width: --value(integer)px;
+}
+
+@utility tab-* {
+  tab-size: --value(integer);
+}
+
+/* 📌 Например, мы хотим создавать классы:
+tab-4
+tab-8
+tab-12
+
+для настройки ширины табуляции.
+В CSS:
+@utility tab-* {
+  tab-size: --value(integer);
+}
+
+Теперь можно использовать:
+<pre className="tab-4">
+  Code
+</pre>
+
+Разбираем
+@utility tab-* {
+Звёздочка * означает, что утилита принимает значение.
+tab-size: --value(integer);
+Функция --value() сообщает Tailwind, как интерпретировать значение.
+В данном случае ожидается целое число. Например: tab-4 создаёт правило с: tab-size: 4; */
+
+
+/* 📌 @apply — использование существующих utilities внутри CSS */
+/* @apply позволяет использовать уже существующие utility-классы внутри обычного CSS-правила. */
+
+/* 🔹 Встраивает существующие utilities в CSS */
+.shop-button {
+  @apply rounded-lg bg-brand px-4 py-2 font-semibold text-white;
+}

@@ -5,7 +5,7 @@ type FavoriteButtonProps = {
 };
 
 // Поэтому для строковых className лучше писать явно:
-export default function FavoriteButton({ isFavorite }: FavoriteButtonProps) {
+export default function FavoriteButtonTest({ isFavorite }: FavoriteButtonProps) {
   return (
     // 📌 Условные классы с &&
     // Если isFavorite равен true, условное выражение возвращает строку классов.

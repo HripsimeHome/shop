@@ -1,34 +1,15 @@
 @use "./index" as *;
 @import "tailwindcss";
-// @use "./vars" as *;
+@custom-variant dark (&:where(.dark, .dark *));
 
-//  означает: // Использовать содержимое style.scss без необходимости писать style. перед каждой переменной, mixin или функцией.
-// @use "style"; → обращаемся через namespace:
+ 
 
-// @use → подключает и использует Sass-модуль.
 
-// После этого Tailwind создаёт соответствующий utility-класс:
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-  --content-width: 350px;
-  --color-primary: #dbec62;
-  --color-dark: #050505;
-  --color-white: #ffffff;
-  --color-gray: #f3f4f6;
-  --radius-card: 16px;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
 
 @theme {
   --color-primary: #dbec62;
+   --color-brand: #2563ebl;
 }
 
 html {
@@ -72,7 +53,7 @@ a {
 }
 
 .text-red {
-  color: red;
+  color: #ff0000;
 }
 
 // 📌 Global CSS хорошо подходит для:

@@ -1,15 +1,41 @@
 "use client";
-import styles from "./AboutContent.module.scss";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import Typography from "@/components/ui/Typography";
 
 export default function AbouContent() {
   const router = useRouter();
   return (
-    <section className={styles.aboutContent}>
-      <h3>About content</h3>
-      <div className={styles.aboutContent__block}>
-        <div>
+    <section>
+      <h3 className="text-xl">About content</h3>
+      <p>localFont - Montserrat-Variable.woff2</p>
+      <div className="font-description font-[300]">В коде можно исползовать также в квадратных скобках: className="font-[300]"</div>
+      <div className="font-description font-normal">Regular</div>
+      <div className="font-description font-medium">Medium</div>
+      <div className="font-description font-semibold">SemiBold</div>
+      <div className="font-description font-bold">Bold</div>
+      <div className="font-description font-extrabold">Extrabold</div>
+
+      <br />
+     {/* 🔹  Для простых случаев обычный: <p className="text-base leading-7"> может быть понятнее. */}
+      <Typography variant="h1">
+        Typography variant="h1"
+      </Typography>
+
+      <Typography variant="h2">
+        Typography variant="h2"
+      </Typography>
+
+      <Typography variant="body">
+       Typography variant="body"
+      </Typography>
+
+      <Typography variant="small">
+        Typography variant="small"
+      </Typography>
+     <br />
+      <div className="flex my-50px max-w-[900px]">   
+        <div className="font-description font-medium">
           It is a long established fact that a reader will be distracted by the
           readable content of a page when looking at its layout. The point of
           using Lorem Ipsum i It is a long established fact that a reader will
@@ -20,19 +46,20 @@ export default function AbouContent() {
           has a more-or-less normal distribution of
         </div>
 
-        <div className={styles.aboutContent__staffImg}>
-          <Image src="/images/product.jpg" alt="Product" priority fill />
+        <div className="relative w-[400px] h-[200px]">
+      <Image src="/images/product.jpg" alt="Product" priority fill />
         </div>
       </div>
       <h3>Our office</h3>
-      <div className={styles.aboutContent__ourOffice}>
+      <div className="relative w-[400px] h-[200px]"> 
         <Image
           src="/images/ourOffice.webp"
           alt="Our office"
           fill
           sizes="(max-width: 768px) 100vw, 50vw"
-          className="opacity-20 transition-opacity hover:opacity-100"
+          className="opacity-20 transition-opacity duration-300 hover:opacity-100"
         />
+ 
         {/* sizes используется вместе с адаптивными изображениями, особенно с: fill */}
         {/* На экранах до 768px изображение занимает всю ширину viewport, а на больших экранах — примерно половину. vw означает: viewport width
 То есть ширина окна браузера. */}
@@ -99,7 +126,38 @@ export default function AbouContent() {
             <h2 className="text-2xl font-bold">Featured Product</h2>
           </div>
         </div>
+
+        <br />
+        <p>Иногда изображение нужно не только обрезать, но и правильно расположить внутри контейнера. Для этого используется: object-position
+        </p>
+        <p>object-top указывает, что при обрезке нужно сохранять верхнюю часть изображения ???? - не отобразилось.</p>
+        <div className="w-[700px] h-[500px] border-2 border-red-400">
+        <Image
+        src="/images/ourOffice.webp"
+        alt="Fashion"
+        width={600}
+        height={400}
+          preload 
+          //  preload -  использовать Для важного изображения первого экрана;
+        className="h-64 w-full object-cover object-top"
+      />
       </div>
+<p>image of aspect-[4/3]</p>
+      <div className="relative aspect-[4/3] w-full">
+     {/* 🔹 Адаптивные изображения  
+      <div className="relative aspect-square w-full lg:aspect-[4/3]">  */}
+        <Image
+        src="/images/ourOffice.webp"
+        alt="Fashion"
+        width={600}
+        height={400}
+          preload 
+          //  preload -  использовать Для важного изображения первого экрана;
+        className="object-cover"
+      />
+      </div>
+      </div>
+
     </section>
   );
 }

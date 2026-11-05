@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/cn";
 // 📌 Типизация вариантов через Union Type
 //Создадим кнопку с тремя вариантами оформления.
 import type { ButtonHTMLAttributes } from "react";

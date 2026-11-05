@@ -5,10 +5,12 @@ import Link from "next/link";
 //   ↓
 // переход по ссылке
 import styles from "./page.module.css";
+import Container from "@/components/layout/Container"
 //import Button from "./components/ui/Button";
 
 export default function Home() {
   return (
+    <Container>
     <div className={styles.page}>
       <main className={styles.main}>
         {/* <Image
@@ -59,7 +61,7 @@ export default function Home() {
         <br />
         w-full = width: 100%; → относительно родительского элемента. w-screen =
         width: 100vw; → относительно viewport.
-        <div className="w-screen bg-orange-100">
+        <div className="bg-orange-100">
           w-screen = width: 100vw; → относительно viewport.
         </div>
         <br />
@@ -123,8 +125,9 @@ export default function Home() {
             Deploy Now
           </a>         
         </div> */}
-      </main>
+      </main>     
     </div>
+   </Container>
   );
 }
 

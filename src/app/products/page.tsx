@@ -1,8 +1,7 @@
-import styles from "./ProductsPage.module.scss";
 import { getProducts } from "@/lib/products";
-import ProductCard from "@/components/ProductCard/ProductCard";
+import ProductCard from "@/components/Products/ProductCard";
 import type { Metadata } from "next";
-import CartButton from "@/components/ProductCard/ProductCardButtonConditional";
+import CartButton from "@/components/Products/ProductCardButtonConditional";
 
 export const metadata: Metadata = {
   title: "Products",

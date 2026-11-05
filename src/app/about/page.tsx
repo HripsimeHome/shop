@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import Container from "@/components/layout/Container"
 import AboutHeader from "@/components/About/AboutHeader/AboutHeader";
 import AboutContent from "@/components/About/AboutContent/AboutContent";
+import SectionTitle from '@/components/ui/SectionTitle';
 
 export const metadata: Metadata = {
   title: "About",
@@ -10,11 +12,12 @@ export const metadata: Metadata = {
 
 export default function About() {
   return (
-    <div>
-      <h1>About Page</h1>
+    <Container>
+      <SectionTitle  className="pt-22">About Page via SectionTitle component pt-12
+      </SectionTitle>      
       <AboutHeader />
       <AboutContent />
-    </div>
+    </Container>
   );
 }
 
