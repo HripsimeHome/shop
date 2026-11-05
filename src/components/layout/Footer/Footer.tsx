@@ -1,55 +1,27 @@
-import Link from "next/link";
-import Container from "@/components/layout/Container"
+import Container from "@/components/layout/Container";
+import NavigationLinks from "@/components/layout/NavigationLinks";
+import { footerNavigation } from "@/constants/navigation";
+
+
 export default function Footer() {
   return (
-    <footer className="flex flex-col items-center justify-between gap-4 py-8 md:flex-row">
+    <footer className="py-8">
       <Container>
-      footer    
-      <Link href="/">Home</Link>
-      <br />
-      <Link href="/products">Products</Link>
+        <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
+          <p className="text-sm text-gray-500">
+            © 2026 Shop. All rights reserved.
+          </p>
+          {/* Footer использует тот же компонент, но передаёт собственный массив ссылок и стили. */}
+          <NavigationLinks
+            items={footerNavigation}
+            ariaLabel="Footer navigation"
+            listClassName="flex flex-wrap items-center justify-center gap-6"
+            linkClassName="text-sm font-medium transition-colors"
+            activeClassName="text-blue-600"
+            inactiveClassName="text-gray-500 hover:text-blue-600"
+          />
+        </div>
       </Container>
     </footer>
   );
 }
-
-
-// import Link from "next/link";
-// import Container from "./Container";
-
-// export default function Footer() {
-//   return (
-//     <footer className="border-t border-gray-200 bg-gray-50">
-//       <Container>
-//         <div className="flex flex-col items-center justify-between gap-4 py-8 md:flex-row">
-//           <p className="text-sm text-gray-600">
-//             © {new Date().getFullYear()} Shop.
-//             All rights reserved.
-//           </p>
-
-//           <nav aria-label="Footer navigation">
-//             <ul className="flex items-center gap-6">
-//               <li>
-//                 <Link
-//                   href="/"
-//                   className="text-sm text-gray-600 hover:text-blue-600"
-//                 >
-//                   Home
-//                 </Link>
-//               </li>
-
-//               <li>
-//                 <Link
-//                   href="/products"
-//                   className="text-sm text-gray-600 hover:text-blue-600"
-//                 >
-//                   Products
-//                 </Link>
-//               </li>
-//             </ul>
-//           </nav>
-//         </div>
-//       </Container>
-//     </footer>
-//   );
-// }

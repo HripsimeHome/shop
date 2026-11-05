@@ -1,9 +1,10 @@
-import Link from "next/link";
-import Container from "@/components/layout/Container";
-import { HeaderLogo } from "./HeaderLogo";
-import { HeaderNav } from "./HeaderNav";
-import { CartButton } from "./CartButton"; 
+import Container from "@/components/layout/Container"; 
 import ThemeToggle from "@/components/ThemeToggle";
+
+import  CartButton from "./CartButton";
+import  HeaderLogo from "./HeaderLogo";
+import  HeaderNav  from "./HeaderNav"
+import MobileMenu from "./MobileMenu";
 // import {
 //   ShoppingCart,
 //   Menu,
@@ -14,8 +15,7 @@ import ThemeToggle from "@/components/ThemeToggle";
 
 const Header = () => {
   return (
-    <header className="sticky top-0 z-20 bg-primary dark:bg-brand  dark:hover:bg-brand-hover">
-       
+    <header className="sticky top-0 z-20 bg-primary dark:bg-brand  dark:hover:bg-brand-hover">       
       {/* <header className="sticky top-0 z-20 flex md:place-content-center max-w-7xl px-4 py-4">  */}
       {/* max-w-7xl — 80rem */}
       <Container>
@@ -25,11 +25,10 @@ const Header = () => {
             <HeaderNav />
           </div>
           <CartButton count={0} />
+          <MobileMenu />
         </div>
-
- <ThemeToggle />
-   
-        </Container>
+       <ThemeToggle />   
+       </Container>
     </header>
   );
 };
